@@ -1,0 +1,13 @@
+name: Build
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+      - name: Make package
+        run: makepkg -s
