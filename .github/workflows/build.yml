@@ -17,3 +17,8 @@ jobs:
           chown -R build .
       - name: Make package
         run: su build -c "makepkg -s"
+      - name: Upload
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: package
+          path: "*.pkg.*"
