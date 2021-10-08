@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Prepare
         run: |
-          pacman-key --init
           pacman -Syu --noconfirm gmp mpfr arm-none-eabi-newlib arm-none-eabi-binutils zlib libmpc
           useradd build
           chown -R build .
+          su build -c "gpg --keyserver pgp.mit.edu --recv-keys 33C235A34C46AA3FFB293709A328C3A2C3C45C06 D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62 13975A70E63C361C73AE69EF6EEB81F8981C74C7"
       - name: Make package
         run: su build -c "makepkg -s"
       - name: Release
