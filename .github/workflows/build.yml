@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Prepare
         run: |
-          pacman -Syu
+          pacman -Syu --noconfirm
           useradd build
       - name: Make package
         run: su build && makepkg -s
