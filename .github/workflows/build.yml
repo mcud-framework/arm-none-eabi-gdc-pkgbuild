@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: archlinux:base-devel
+    container: archlinux:base-devel
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Make package
