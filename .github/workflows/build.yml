@@ -15,9 +15,8 @@ jobs:
           pacman -Syu --noconfirm --needed gmp mpfr arm-none-eabi-newlib arm-none-eabi-binutils zlib libmpc
           useradd -m build
           chown -R build .
-          su build -c "gpg --keyserver keys.openpgp.org --recv-keys 33C235A34C46AA3FFB293709A328C3A2C3C45C06 D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62 13975A70E63C361C73AE69EF6EEB81F8981C74C7 || true"
       - name: Make package
-        run: su build -c "makepkg -s"
+        run: su build -c "makepkg -s --skippgpcheck"
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
