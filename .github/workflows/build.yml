@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Make package
+      - name: Prepare
         run: |
+          pacman -Syu
           useradd build
-          su build
-          makepkg -s
+      - name: Make package
+        run: su build && makepkg -s
