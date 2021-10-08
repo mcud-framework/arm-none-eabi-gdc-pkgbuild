@@ -9,6 +9,10 @@ jobs:
     container: archlinux:base-devel
     runs-on: ubuntu-latest
     steps:
+      - name: Prepare
+        run: |
+          useradd -m build
+          su build
       - uses: actions/checkout@v2
       - name: Make package
         run: makepkg -s
