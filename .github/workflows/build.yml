@@ -16,7 +16,7 @@ jobs:
           useradd build
       - name: Make package
         run: |
-			whoami
-			su build
-			whoami
-			makepkg -s
+          whoami
+          su build
+          whoami
+          makepkg -s
