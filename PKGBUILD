@@ -17,9 +17,12 @@ optdepends=('arm-none-eabi-newlib: Standard C library optimized for embedded sys
 options=(!emptydirs !strip)
 provides=($_target-gcc=$pkgver)
 conflicts=($_target-gcc)
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
+source=(
+	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+	#ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
+	#http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
+	https://master.dl.sourceforge.net/project/libisl/isl-$_islver.tar.bz2
+)
 sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
