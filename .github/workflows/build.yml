@@ -15,4 +15,8 @@ jobs:
           pacman -Syu --noconfirm
           useradd build
       - name: Make package
-        run: su build && makepkg -s
+        run: |
+			whoami
+			su build
+			whoami
+			makepkg -s
