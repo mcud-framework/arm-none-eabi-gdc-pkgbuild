@@ -8,6 +8,7 @@ jobs:
   build:
     container: archlinux:base-devel
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
@@ -16,9 +17,9 @@ jobs:
           useradd build
           chown -R build .
       - name: Make package
+        if: startsWith(github.ref, 'refs/tags/')
         run: su build -c "makepkg -s"
-      - name: Upload
-        uses: actions/upload-artifact@v2.2.4
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: package
-          path: "*.pkg.*"
+          files: "*.pkg.*"
