@@ -22,14 +22,10 @@ source=(
 	#ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
 	#http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	https://master.dl.sourceforge.net/project/libisl/isl-$_islver.tar.bz2
-	gcc11-Wno-format-security.patch
 )
-sha256sums=(
-    'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
-    'SKIP'
-    'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
-    '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e'
-)
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+            'SKIP'
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
@@ -50,9 +46,6 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  # configure.ac: When adding -Wno-format, als add -Wno-format-security
-  patch -p1 -i "$srcdir/gcc11-Wno-format-security.patch"
 
   mkdir "$srcdir"/build-{gcc,gcc-nano}
 }
