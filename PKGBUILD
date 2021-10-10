@@ -53,6 +53,10 @@ prepare() {
 _build_gcc() {
   CFLAGS=${CFLAGS/-Wformat/}
   CFLAGS=${CFLAGS/-Werror=format-security/}
+  CPPFLAGS=${CPPFLAGS/-Wformat/}
+  CPPFLAGS=${CPPFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Wformat/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
   "$srcdir"/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
@@ -93,6 +97,11 @@ _build_gcc() {
 }
 
 build() {
+  CFLAGS=${CFLAGS/-Wformat/}
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CPPFLAGS=${CPPFLAGS/-Wformat/}
+  CPPFLAGS=${CPPFLAGS/-Werror=format-security/}
+
   cd "$srcdir"/build-gcc
   export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
   export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
