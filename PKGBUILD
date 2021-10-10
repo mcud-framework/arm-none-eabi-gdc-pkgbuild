@@ -51,6 +51,8 @@ prepare() {
 }
 
 _build_gcc() {
+  CFLAGS=${$CFLAGS/-Wformat/}
+  CFLAGS=${$CFLAGS/-Werror=format-security/}
   "$srcdir"/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
