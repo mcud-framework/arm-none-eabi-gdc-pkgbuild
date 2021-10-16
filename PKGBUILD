@@ -6,7 +6,7 @@ pkgname=$_target-gdc
 pkgver=11.2.0
 _islver=0.24
 pkgrel=2
-#_snapshot=8-20180427
+_snapshot=e5a67458da39de7db8971cc5ec017fa6199a08c1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -18,13 +18,13 @@ options=(!emptydirs !strip)
 provides=($_target-gcc=$pkgver)
 conflicts=($_target-gcc)
 source=(
-	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+	gcc-$pkgver.zip::https://github.com/D-Programming-GDC/gcc/archive/$_snapshot.zip
+	#https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
 	#ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
 	#http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
 	https://master.dl.sourceforge.net/project/libisl/isl-$_islver.tar.bz2
 )
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
-            'SKIP'
+sha256sums=('993e74560e89bd7a1ca19d52ef8b8c50d3fe2db160c275d779f3e04401627e1d'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
