@@ -12,7 +12,7 @@ arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
 depends=($_target-binutils zlib libmpc)
-makedepends=(gmp mpfr $_target-newlib)
+makedepends=(gmp mpfr $_target-newlib gdc)
 optdepends=('arm-none-eabi-newlib: Standard C library optimized for embedded systems')
 options=(!emptydirs !strip)
 provides=($_target-gcc=$pkgver)
